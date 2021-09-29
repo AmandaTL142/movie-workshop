@@ -17,26 +17,26 @@ public class MovieService {
     public MovieService() throws FileNotFoundException {
     }
 
-    /*GetFirst, finding first movie and display title*/
+    /*
+    3.2 /getFirst
+    Shown in class This end-points calls a service that finds the first movie from the list and displays the title.
+     */
     public String getFirstMovie() throws FileNotFoundException{
-        ArrayList <Movie> mList = moviesList;
-        return  "The first movie on the list is: " + mList.get(0).getTitle();
-
-    }
-
-    /*This end-point calls a service,  that finds a single random movie from the list and displays the
-    title */
-    public String getRandomMovie() throws FileNotFoundException{
-        //pick random movie
-
-        //Movie randomMovie = moviesList.random(0 - moviesList.size)
-        Random randomizer = new Random();
-        Movie randomMovie = moviesList.get(randomizer.nextInt(moviesList.size()));
-        return randomMovie.getTitle();
+        return moviesList.get(0).getTitle();
     }
 
     /*
-    3.4 /getTenSortByPopularity - Amanda
+    3.3 /getRandom
+    This end-point calls a service, that finds a single random movie from the list and displays the title.
+     */
+    public String getRandomMovie() throws FileNotFoundException{
+        double currentNumber = Math.floor(Math.random()*(moviesList.size()-1)+1);
+        String randomTitle = moviesList.get((int) currentNumber).getTitle();
+        return randomTitle;
+    }
+
+    /*
+    3.4 /getTenSortByPopularity
         This end-point calls a service that fetches 10 random movies, maps each result to a Movie model class, adds to a
         Movie Arraylist and prints the result to the browser - sorted in ascending order by popularity
         (Hint: Remember the comparable interface).
@@ -73,14 +73,14 @@ public class MovieService {
     3.5  /howManyWonAnAward This  end-point  prints  how  many  of
     the  movies  of  the  data-set  that  won  an award.
     */
-    public int HowManyWonAnAward() throws FileNotFoundException {
-        int amountOfMoviesWithAwards = 0;
-        for(Movie movie : moviesList){
-            if(movie.isAwards().equals("Yes")){
-                amountOfMoviesWithAwards++;
+    public int howManyWonAnAward() throws FileNotFoundException {
+        int awardCount = 0;
+        for (Movie movie:moviesList) {
+            if (movie.isAwards().equalsIgnoreCase("yes")){
+                awardCount ++;
             }
         }
-        return amountOfMoviesWithAwards;
+        return awardCount;
     }
 
     //3.6 (Advanced)
