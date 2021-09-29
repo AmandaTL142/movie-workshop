@@ -53,7 +53,7 @@ public class MovieService {
 
         Collections.sort(sortedTenMovies);
 
-        StringBuilder result = new StringBuilder("Movies:<br>");
+        StringBuilder result = new StringBuilder("Here are ten random movies sorted by popularity:<br>");
         for (Movie movie: sortedTenMovies) {
             result.append(movie.getTitle()).append("; popularity: ").append(movie.getPopularity()).append("<br>");
 
@@ -67,14 +67,14 @@ public class MovieService {
     3.5  /howManyWonAnAward This  end-point  prints  how  many  of
     the  movies  of  the  data-set  that  won  an award.
     */
-    public int howManyWonAnAward() {
+    public String howManyWonAnAward() {
         int awardCount = 0;
         for (Movie movie:moviesList) {
             if (movie.isAwards().equalsIgnoreCase("yes")){
                 awardCount ++;
             }
         }
-        return awardCount;
+        return awardCount + " of the " + moviesList.size() + " movies on the list have won at least one award.";
     }
 
     /*

@@ -23,13 +23,13 @@ public class MovieController{
     //Task 3.2:
     @GetMapping("/getFirstMovie")
     public String getFirst() {
-        return movieService.getFirstMovie();
+        return "The first movie on the lis is '" + movieService.getFirstMovie() + "'.";
     }
 
     //Task 3.3:
     @GetMapping("/getRandomMovie")
     public String getRandomMovie() {
-        return movieService.getRandomMovie();
+        return "Your random movie is '" + movieService.getRandomMovie() + "'.";
     }
 
     //Task 3.4:
@@ -40,7 +40,7 @@ public class MovieController{
 
     //Task 3.5:
     @GetMapping("/howManyWonAnAward")
-    public int howManyWonAnAward() {
+    public String howManyWonAnAward() {
         return movieService.howManyWonAnAward();
     }
 
