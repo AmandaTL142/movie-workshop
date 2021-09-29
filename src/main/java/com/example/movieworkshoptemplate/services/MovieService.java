@@ -93,7 +93,7 @@ public class MovieService {
             }
         }
         if (instanceCount != 0){
-            result.append("<br>Total no. of movies: " + instanceCount);
+            result.append("<br>Total no. of movies: ").append(instanceCount);
             return result.toString();
         } else {
             return "There are no movies with " + n + " instance(s) of " + "'" + c + "' in title.";
