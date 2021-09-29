@@ -23,7 +23,7 @@ public class MovieController{
     //Task 3.2:
     @GetMapping("/getFirstMovie")
     public String getFirst() {
-        return "The first movie on the lis is '" + movieService.getFirstMovie() + "'.";
+        return "The first movie on the list is '" + movieService.getFirstMovie() + "'.";
     }
 
     //Task 3.3:
