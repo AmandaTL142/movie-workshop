@@ -83,14 +83,21 @@ public class MovieService {
      */
     public String filterMovies(char c, int n){
         StringBuilder result = new StringBuilder("Movies with " + n + " instance(s) of " + "'" + c + "' in title:<br>");
+        int instanceCount = 0;
         for (Movie movie: moviesList) {
             String title = movie.getTitle();
             long count = title.chars().filter(ch -> ch == c).count();
             if (count == n){
                 result.append(title).append("<br>");
+                instanceCount ++;
             }
         }
-        return result.toString();
+        if (instanceCount != 0){
+            result.append("<br>Total no. of movies: " + instanceCount);
+            return result.toString();
+        } else {
+            return "There are no movies with " + n + " instance(s) of " + "'" + c + "' in title.";
+        }
     }
 
     /*
@@ -117,7 +124,7 @@ public class MovieService {
         int avLengthG2 = countTotalLengthG2/countNoMoviesG2;
 
         if (avLengthG1 > avLengthG2){
-            return "The genre " + genre1 + " has movies of an average longer length than " + genre2;
+            return "The genre '" + genre1 + "' has movies of an average longer length than the genre '" + genre2 + "'.";
         } else if (avLengthG1 < avLengthG2) {
             return "The genre '" + genre2 + "' has movies of an average longer length than the genre '" + genre1 + "'.";
         } else {

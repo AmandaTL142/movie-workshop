@@ -58,6 +58,12 @@ public class MovieController{
     // Eksempel: http://localhost:8080/longest?g1=Drama&g2=Comedy
     @GetMapping("/longest")
     public String compareGenreLength(@RequestParam("g1") String g1, @RequestParam("g2") String g2) {
+        try {
+            movieService.compareGenreLength(g1, g2);
+        }
+        catch (Exception e){
+            return "Invalid input";
+        }
         return movieService.compareGenreLength(g1, g2);
     }
 
