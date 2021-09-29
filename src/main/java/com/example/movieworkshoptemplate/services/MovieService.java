@@ -6,7 +6,6 @@ import com.example.movieworkshoptemplate.repositories.ReadFile;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 import java.util.HashSet;
 
 public class MovieService {
@@ -21,7 +20,7 @@ public class MovieService {
     3.2 /getFirst
     Shown in class This end-points calls a service that finds the first movie from the list and displays the title.
      */
-    public String getFirstMovie() throws FileNotFoundException{
+    public String getFirstMovie() {
         return moviesList.get(0).getTitle();
     }
 
@@ -29,10 +28,9 @@ public class MovieService {
     3.3 /getRandom
     This end-point calls a service, that finds a single random movie from the list and displays the title.
      */
-    public String getRandomMovie() throws FileNotFoundException{
+    public String getRandomMovie() {
         double currentNumber = Math.floor(Math.random()*(moviesList.size()-1)+1);
-        String randomTitle = moviesList.get((int) currentNumber).getTitle();
-        return randomTitle;
+        return moviesList.get((int) currentNumber).getTitle();
     }
 
     /*
@@ -42,7 +40,7 @@ public class MovieService {
         (Hint: Remember the comparable interface).
      */
 
-    public String getTenSortByPopularity() throws FileNotFoundException{
+    public String getTenSortByPopularity() {
 
         HashSet<Movie> tenRandomMovies = new HashSet<>();
 
@@ -51,21 +49,17 @@ public class MovieService {
             tenRandomMovies.add(moviesList.get((int) currentNumber));
         }
 
-        ArrayList<Movie> sortedTenMovies = new ArrayList<>();
-
-        for(Movie movie : tenRandomMovies){
-            sortedTenMovies.add(movie);
-        }
+        ArrayList<Movie> sortedTenMovies = new ArrayList<>(tenRandomMovies);
 
         Collections.sort(sortedTenMovies);
 
-        String result = "Movies:<br>";
+        StringBuilder result = new StringBuilder("Movies:<br>");
         for (Movie movie: sortedTenMovies) {
-            result += movie.getTitle() + "; popularity: " + movie.getPopularity() + "<br>";
+            result.append(movie.getTitle()).append("; popularity: ").append(movie.getPopularity()).append("<br>");
 
         }
 
-        return result;
+        return result.toString();
     }
 
 
@@ -73,7 +67,7 @@ public class MovieService {
     3.5  /howManyWonAnAward This  end-point  prints  how  many  of
     the  movies  of  the  data-set  that  won  an award.
     */
-    public int howManyWonAnAward() throws FileNotFoundException {
+    public int howManyWonAnAward() {
         int awardCount = 0;
         for (Movie movie:moviesList) {
             if (movie.isAwards().equalsIgnoreCase("yes")){
@@ -83,27 +77,20 @@ public class MovieService {
         return awardCount;
     }
 
-    //3.6 (Advanced)
-    // /filter?char=’x’amount=’n’This end points calls a service that prints all movies,
-    // but only if they contain x character n amount of times
-    public ArrayList <Movie> listOfMoviesWithXName(){
-        return listOfMoviesWithXName();
-    }
-
     /*
     3.6 (Advanced) /filter?char=’x’amount=’n’ - Amanda
     This end points calls a service that prints all movies, but only if they contain x character n amount of times
      */
     public String filterMovies(char c, int n){
-        String result = "Movies with " + n + " instances of " + "'" + c +"' in title:<br>";
+        StringBuilder result = new StringBuilder("Movies with " + n + " instances of " + "'" + c + "' in title:<br>");
         for (Movie movie: moviesList) {
             String title = movie.getTitle();
             long count = title.chars().filter(ch -> ch == c).count();
             if (count == n){
-                result += title + "<br>";
+                result.append(title).append("<br>");
             }
         }
-        return result;
+        return result.toString();
     }
 
     /*

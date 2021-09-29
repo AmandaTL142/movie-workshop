@@ -14,7 +14,7 @@ public class ReadFile{
         //Skips metadata
         readmovie.nextLine();
 
-        ArrayList<Movie> moviesList = new ArrayList<Movie>();
+        ArrayList<Movie> moviesList = new ArrayList<>();
 
         while (readmovie.hasNext()) {
 
