@@ -82,7 +82,7 @@ public class MovieService {
     This end points calls a service that prints all movies, but only if they contain x character n amount of times
      */
     public String filterMovies(char c, int n){
-        StringBuilder result = new StringBuilder("Movies with " + n + " instances of " + "'" + c + "' in title:<br>");
+        StringBuilder result = new StringBuilder("Movies with " + n + " instance(s) of " + "'" + c + "' in title:<br>");
         for (Movie movie: moviesList) {
             String title = movie.getTitle();
             long count = title.chars().filter(ch -> ch == c).count();
