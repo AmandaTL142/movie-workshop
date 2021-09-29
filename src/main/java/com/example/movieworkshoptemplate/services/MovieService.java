@@ -78,7 +78,7 @@ public class MovieService {
     }
 
     /*
-    3.6 (Advanced) /filter?char=’x’amount=’n’ - Amanda
+    3.6 (Advanced) /filter?char=’x’amount=’n’
     This end points calls a service that prints all movies, but only if they contain x character n amount of times
      */
     public String filterMovies(char c, int n){
@@ -94,7 +94,7 @@ public class MovieService {
     }
 
     /*
-    3.7 (Advanced) /longest?g1=’x’g2=’y’ - Amanda
+    3.7 (Advanced) /longest?g1=’x’g2=’y’
     This end-point calls a service that compares two genres and finds what genre, on average, has the longest movies.
      */
 
